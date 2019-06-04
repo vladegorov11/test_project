@@ -1,0 +1,30 @@
+<%= form_with(model: role, local: true) do |f| %>
+  <% if role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+      <ul>
+      <% role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <h3>Notification Template form </h3>
+  <%= f.fields_for :notification_templates do |form| %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit  class: "btn btn-primary" %>
+  </div>
+<% end %>

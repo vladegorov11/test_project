@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <% unless user_signed_in?  %>
+            <%= link_to 'login', new_user_session_path, class: 'nav-item nav-link'%>
+            <%= link_to 'registration', new_user_registration_path, class: 'nav-item nav-link'%>
+          <% else %>
+            <%= link_to 'users', users_path, class: 'nav-item nav-link'%>
+            <%= link_to 'company', companies_path, class: 'nav-item nav-link'%>
+            <%= link_to 'roles', roles_path, class: 'nav-item nav-link'%>
+            <%= link_to 'invite user', new_user_invitation_path, class: 'nav-item nav-link'%>
+            <%= link_to 'log out', destroy_user_session_path, class: "nav-link", method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class='container'>
+      <%= yield %>
+    </div>
+  </body>
+</html>

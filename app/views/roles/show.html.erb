@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+<h3>Notification Template </h3>
+<p>
+  <strong>Name:</strong>
+  <%= @role.notification_template.name if @role.notification_template%>
+</p>
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>
